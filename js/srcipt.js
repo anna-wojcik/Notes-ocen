@@ -4,8 +4,16 @@ let subjectsTable = [
     content: "Polski",
     marks: [4, 2, 5],
     testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
+    wagaMarks: [1, 2, 1],
+  },
+  {
+    content: "Matematyka",
+    marks: [4, 5, 5],
+    testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
+    wagaMarks: [1, 2, 1],
   },
 ];
+
 const addNewSubject = (nameSubject) => {
   subjectsTable = [
     ...subjectsTable,
@@ -13,10 +21,17 @@ const addNewSubject = (nameSubject) => {
       content: nameSubject,
       marks: [],
       testMarks: [],
+      wagaMarks: [],
     },
   ];
 
   renderSubjects();
+};
+
+const addNewMark = (buttonIndex, mark, test, waga) => {
+  subjectsTable[buttonIndex].marks.push(mark);
+  subjectsTable[buttonIndex].testMarks.push(test);
+  subjectsTable[buttonIndex].wagaMarks.push(waga);
 };
 
 const renderMarks = (subject) => {
@@ -50,10 +65,15 @@ const renderSubjects = () => {
             <button class="js-button--addMark list__item--buttonAddMark"></button>
           </ul>
         </li>
+        <form class="js-form--addMark"></form>
       `;
   }
 
   document.querySelector(".js-list").innerHTML = subjectHtmlContent;
+  const buttonsRenderFormMark = document.querySelectorAll(".js-button--addMark");
+  buttonsRenderFormMark.forEach((buttonRenderFormMark, buttonIndex) => {
+    buttonRenderFormMark.addEventListener("click", onButtonRenderFormMark(buttonIndex));
+  });
 };
 
 const onButtonRenderForm = () => {
@@ -78,6 +98,63 @@ const onButtonRenderForm = () => {
   });
 };
 
+const onButtonRenderFormMark = (buttonIndex) => {
+  return () => {
+    let formHtmlInput = "";
+    formHtmlInput += `
+    <p>
+      <label>
+      Ocena
+        <select class="js-mark">
+        <option value="1">1</option>
+        <option value="1.5">1+</option>
+        <option value="1.75">2-</option>
+        <option value="2">2</option>
+        <option value="2.5">2+</option>
+        <option value="2.75">3-</option>
+        <option value="3">3</option>
+        <option value="3.5">3+</option>
+        <option value="3.75">4-</option>
+        <option value="4">4</option>
+        <option value="4.5">4+</option>
+        <option value="4.75">5-</option>
+        <option value="5">5</option>
+        <option value="5.5">5+</option>
+        <option value="5.75">6-</option>
+        <option value="6">6</option>
+      </select> 
+    </label>
+    </p>
+    <p>
+      <input class="js-test" required placeholder="*Otrzmano za">
+    </p>
+    <p>
+      <label>
+      Waga oceny
+        <select class="js-waga">
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select> 
+    </label>
+    </p>
+    <button>Dodaj</button>
+  `;
+
+    const formAddMark = document.querySelectorAll(".js-form--addMark")[buttonIndex];
+    formAddMark.innerHTML = formHtmlInput;
+    formAddMark.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const markElement = formAddMark.querySelector(".js-mark");
+      const mark = Number(markElement.value);
+      const testElement = formAddMark.querySelector(".js-test");
+      const test = testElement.value.trim();
+      const wagaElement = formAddMark.querySelector(".js-waga");
+      const waga = Number(wagaElement.value);
+      addNewMark(buttonIndex, mark, test, waga);
+      renderSubjects();
+    });
+  }
+}
 
 const init = () => {
   renderSubjects();
