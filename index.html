@@ -11,20 +11,25 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
     <link href="css/list.css" rel="stylesheet">
+    <link href="css/button.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
     <script defer src="js/srcipt.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <h1>Notes ocen z przedmiotów</h1>
+    <header class="header">
+        <h1 class="header__name">Notes ocen z przedmiotów</h1>
     </header>
     <main>
         <ul class="js-list list"></ul>
-        <button class="js-button--renderFormSubject">Dodaj nowy przedmiot</button>
-        <form class="js-form--addSubject"></form>
+        <div class="container--line">
+            <button class="js-button--renderFormSubject button--renderFormSubject">DODAJ NOWY PRZEDMIOT</button>
+            <form class="js-form--addSubject form--addSubject"></form>
+        </div>
     </main>
 </body>
 

@@ -1,0 +1,25 @@
+.container--line {
+    border-top: 2px rgb(20, 33, 61) solid;
+    width: 100%;
+    min-height: 300px;
+    margin: 0 auto;
+}
+
+.button--renderFormSubject {
+    border-color: rgb(20, 33, 61);
+    background: white;
+    height: 40px;
+    width: 280px;
+    font-weight: bold;
+    border-radius: 20px;
+    display: block;
+    margin: 40px auto;
+}
+
+.button--renderFormSubject:hover {
+    background: hsl(0, 0%, 94%);
+}
+
+.button--renderFormSubject:active {
+    background: hsl(0, 0%, 80%);
+}

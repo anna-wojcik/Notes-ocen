@@ -1,17 +1,26 @@
 .list {
+    margin: 0;
     list-style: none;
     list-style-type: none;
     padding-left: 0;
-    margin-left: 0;
-    margin: 0 20px;
 }
 
-.list__item--subject {
-    border: 1px solid black;
+.list__item--backgroundGrey {
+    background: rgb(229, 229, 229);
 }
 
 .list__item--paragraph {
-    margin: 10px;
+    margin: 0;
+    padding: 10px 20px;
+}
+
+.list__item--paragraph:nth-of-type(1) {
+    color: rgb(252, 163, 17);
+    font-weight: bold;
+}
+
+.list__item--paragraph:nth-of-type(2) {
+    padding: 0 20px;
 }
 
 .list--marks {
@@ -20,7 +29,8 @@
     flex-wrap: wrap;
     list-style-type: none;
     padding-left: 0;
-    margin-left: 0;
+    padding-bottom: 20px;
+    margin: 10px 20px;
 }
 
 .list__item--mark {
@@ -31,7 +41,7 @@
     width: 90px;
     height: 100px;
     border: 1px solid;
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 .list__item--mark--backgroundRed {
@@ -92,6 +102,14 @@
     border: 1px solid black;
     background-color: white;
     position: relative;
+}
+
+.list__item--buttonAddMark:hover {
+    background: hsl(0, 0%, 94%);
+}
+
+.list__item--buttonAddMark:active {
+    background: hsl(0, 0%, 80%);
 }
 
 .list__item--buttonAddMark::after {

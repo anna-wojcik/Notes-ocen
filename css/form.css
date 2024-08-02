@@ -1,0 +1,63 @@
+.form--addMark, .form--addSubject {
+    margin: 20px auto;
+    padding: 0px 20px;
+    max-width: 450px;
+}
+
+.form__button--addMark {
+    border-color: rgb(20, 33, 61);
+    background: white;
+    height: 40px;
+    width: 160px;
+    font-weight: bold;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media(max-width: 420px) {
+    .form--addMark {
+        width: 200px;
+    }
+    .form__button--addMark {
+        margin: 0;
+    }
+}
+
+.form__button--addMark:hover {
+    background: hsl(0, 0%, 94%);
+}
+
+.form__button--addMark:active {
+    background-color: hsl(0, 0%, 80%);
+}
+
+.form__labelText {
+    width: 100%;
+    max-width: 200px;
+    display: inline-block;
+}
+
+.form__field {
+    width: 160px;
+    height: 30px;
+}
+
+.form__button--addSubject {
+    border-color: rgb(20, 33, 61);
+    background: white;
+    height: 40px;
+    width: 250px;
+    font-weight: bold;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.form__button--addSubject:hover {
+    background: hsl(0, 0%, 94%);
+}
+
+.form__button--addSubject:active {
+    background-color: hsl(0, 0%, 80%);
+}

@@ -1,18 +1,5 @@
 
-let subjectsTable = [
-  {
-    content: "Polski",
-    marks: [4, 2, 5,],
-    testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
-    importanceMarks: [1, 2, 1],
-  },
-  {
-    content: "Matematyka",
-    marks: [1, 3, 6],
-    testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
-    importanceMarks: [1, 2, 2],
-  },
-];
+let subjectsTable = [];
 
 const addNewSubject = (nameSubject) => {
   subjectsTable = [
@@ -43,7 +30,7 @@ const renderMarks = (subject) => {
       backgroundColor = "list__item--mark--backgroundRed";
     } else if (mark >= 1.75 && mark < 2.75) {
       backgroundColor = "list__item--mark--backgroundViolet";
-    } else if (mark >= 2.75  && mark < 3.75) {
+    } else if (mark >= 2.75 && mark < 3.75) {
       backgroundColor = "list__item--mark--backgroundYellow";
     } else if (mark >= 3.75 && mark < 4.75) {
       backgroundColor = "list__item--mark--backgroundBlue";
@@ -88,16 +75,18 @@ const renderSubjects = () => {
     let averageMark = calculateAverageMark(subject);
 
     subjectHtmlContent += `
-        <li class="list__item--subject">
-          <p class="list__item--paragraph">${subject.content}</p>
-          <p class="list__item--paragraph">Średnia: ${averageMark}</p>
-          <p class="list__item--paragraph">Oceny</p>
+        <li>
+          <div class="list__item--backgroundGrey">
+            <p class="list__item--paragraph">${subject.content}</p>
+            <p class="list__item--paragraph">Średnia: ${averageMark}</p>
+            <p class="list__item--paragraph">Oceny</p>
+          </div>
           <ul class="list--marks js-list--marks">
             ${marksHtmlContent}
             <button class="js-button--addMark list__item--buttonAddMark"></button>
           </ul>
         </li>
-        <form class="js-form--addMark"></form>
+        <form class="js-form--addMark form--addMark"></form>
       `;
   }
 
@@ -111,8 +100,13 @@ const renderSubjects = () => {
 const onButtonRenderForm = () => {
   let formHtmlInput = "";
   formHtmlInput += `
-            <input class="js-nameSubject" placeholder="Nazwa przedmiotu"> 
-            <button>Dodaj</button>
+          <p>
+            <label>
+              <span class="form__labelText">*Nazwa przedmiotu</span>
+              <input class="js-nameSubject form__field" required>
+            </label> 
+          </p>
+          <button class="form__button--addSubject">DODAJ PRZEDMIOT</button>
         `;
   document.querySelector(".js-form--addSubject").innerHTML = formHtmlInput;
 
@@ -136,40 +130,49 @@ const onButtonRenderFormMark = (buttonIndex) => {
     formHtmlInput += `
     <p>
       <label>
-      Ocena
-        <select class="js-mark">
-        <option value="1">1</option>
-        <option value="1.5">1+</option>
-        <option value="1.75">2-</option>
-        <option value="2">2</option>
-        <option value="2.5">2+</option>
-        <option value="2.75">3-</option>
-        <option value="3">3</option>
-        <option value="3.5">3+</option>
-        <option value="3.75">4-</option>
-        <option value="4">4</option>
-        <option value="4.5">4+</option>
-        <option value="4.75">5-</option>
-        <option value="5">5</option>
-        <option value="5.5">5+</option>
-        <option value="5.75">6-</option>
-        <option value="6">6</option>
-      </select> 
-    </label>
-    </p>
-    <p>
-      <input class="js-test" required placeholder="*Otrzmano za">
+        <span class="form__labelText">
+          Ocena:
+        </span>
+        <select class="js-mark form__field">
+          <option value="1">1</option>
+          <option value="1.5">1+</option>
+          <option value="1.75">2-</option>
+          <option value="2">2</option>
+          <option value="2.5">2+</option>
+          <option value="2.75">3-</option>
+          <option value="3">3</option>
+          <option value="3.5">3+</option>
+          <option value="3.75">4-</option>
+          <option value="4">4</option>
+          <option value="4.5">4+</option>
+          <option value="4.75">5-</option>
+          <option value="5">5</option>
+          <option value="5.5">5+</option>
+          <option value="5.75">6-</option>
+          <option value="6">6</option>
+        </select> 
+      </label>
     </p>
     <p>
       <label>
-      Waga oceny
-        <select class="js-importance">
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select> 
-    </label>
+        <span class="form__labelText">
+          *Otrzmano za:
+        </span>
+        <input class="js-test form__field" required>
+      </label>
     </p>
-    <button>Dodaj</button>
+    <p>
+      <label>
+        <span class="form__labelText">
+          Waga oceny:
+        </span>
+        <select class="js-importance form__field">
+          <option value="1">1</option>
+          <option value="2">2</option>
+        </select> 
+      </label>
+    </p>
+    <button class="form__button--addMark">DODAJ OCENĘ</button>
   `;
 
     const formAddMark = document.querySelectorAll(".js-form--addMark")[buttonIndex];
