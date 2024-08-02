@@ -31,7 +31,6 @@
     width: 90px;
     height: 100px;
     border: 1px solid;
-    background: grey; /* background zależny od oceny*/
     color: white;
 }
 
