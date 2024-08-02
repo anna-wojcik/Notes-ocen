@@ -48,17 +48,34 @@ const renderMarks = (subject) => {
     i++;
   }
   return marksHtmlContent;
-}
+};
+
+const calculateAverageMark = (subject) => {
+  let sum = 0;
+  let counter = 0;
+  for(let i=0; i < subject.marks.length; i++){
+    sum += subject.marks[i] * subject.importanceMarks[i];
+    counter += subject.importanceMarks[i];
+  }
+  
+  if (counter === 0){
+    return 0;
+  } else {
+    return (sum/counter).toFixed(2);
+  }
+};
 
 const renderSubjects = () => {
   let subjectHtmlContent = "";
 
   for (const subject of subjectsTable) {
     let marksHtmlContent = renderMarks(subject);
+    let averageMark = calculateAverageMark(subject);
+
     subjectHtmlContent += `
         <li class="list__item--subject">
           <p class="list__item--paragraph">${subject.content}</p>
-          <p class="list__item--paragraph">Średnia: </p>
+          <p class="list__item--paragraph">Średnia: ${averageMark}</p>
           <p class="list__item--paragraph">Oceny</p>
           <ul class="list--marks js-list--marks">
             ${marksHtmlContent}
