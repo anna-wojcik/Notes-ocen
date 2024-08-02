@@ -150,7 +150,11 @@ const onButtonRenderFormMark = (buttonIndex) => {
       const test = testElement.value.trim();
       const wagaElement = formAddMark.querySelector(".js-waga");
       const waga = Number(wagaElement.value);
-      addNewMark(buttonIndex, mark, test, waga);
+
+      if(test !== "") {
+        addNewMark(buttonIndex, mark, test, waga);
+      }
+      
       renderSubjects();
     });
   }
