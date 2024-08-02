@@ -4,13 +4,13 @@ let subjectsTable = [
     content: "Polski",
     marks: [4, 2, 5],
     testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
-    wagaMarks: [1, 2, 1],
+    importanceMarks: [1, 2, 1],
   },
   {
     content: "Matematyka",
     marks: [4, 5, 5],
     testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
-    wagaMarks: [1, 2, 1],
+    importanceMarks: [1, 2, 2],
   },
 ];
 
@@ -21,17 +21,17 @@ const addNewSubject = (nameSubject) => {
       content: nameSubject,
       marks: [],
       testMarks: [],
-      wagaMarks: [],
+      importanceMarks: [],
     },
   ];
 
   renderSubjects();
 };
 
-const addNewMark = (buttonIndex, mark, test, waga) => {
+const addNewMark = (buttonIndex, mark, test, importance) => {
   subjectsTable[buttonIndex].marks.push(mark);
   subjectsTable[buttonIndex].testMarks.push(test);
-  subjectsTable[buttonIndex].wagaMarks.push(waga);
+  subjectsTable[buttonIndex].importanceMarks.push(importance);
 };
 
 const renderMarks = (subject) => {
@@ -131,7 +131,7 @@ const onButtonRenderFormMark = (buttonIndex) => {
     <p>
       <label>
       Waga oceny
-        <select class="js-waga">
+        <select class="js-importance">
         <option value="1">1</option>
         <option value="2">2</option>
       </select> 
@@ -148,13 +148,13 @@ const onButtonRenderFormMark = (buttonIndex) => {
       const mark = Number(markElement.value);
       const testElement = formAddMark.querySelector(".js-test");
       const test = testElement.value.trim();
-      const wagaElement = formAddMark.querySelector(".js-waga");
-      const waga = Number(wagaElement.value);
+      const importanceElement = formAddMark.querySelector(".js-importance");
+      const importance = Number(importanceElement.value);
 
-      if(test !== "") {
-        addNewMark(buttonIndex, mark, test, waga);
+      if (test !== "") {
+        addNewMark(buttonIndex, mark, test, importance);
       }
-      
+
       renderSubjects();
     });
   }
