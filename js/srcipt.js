@@ -2,13 +2,13 @@
 let subjectsTable = [
   {
     content: "Polski",
-    marks: [4, 2, 5],
+    marks: [4, 2, 5,],
     testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
     importanceMarks: [1, 2, 1],
   },
   {
     content: "Matematyka",
-    marks: [4, 5, 5],
+    marks: [1, 3, 6],
     testMarks: ["Aktywność", "Sprawdzian", "Kartkówka"],
     importanceMarks: [1, 2, 2],
   },
@@ -37,9 +37,24 @@ const addNewMark = (buttonIndex, mark, test, importance) => {
 const renderMarks = (subject) => {
   let marksHtmlContent = "";
   let i = 0;
+  let backgroundColor;
   for (mark of subject.marks) {
+    if (mark >= 1 && mark < 1.75) {
+      backgroundColor = "list__item--mark--backgroundRed";
+    } else if (mark >= 1.75 && mark < 2.75) {
+      backgroundColor = "list__item--mark--backgroundViolet";
+    } else if (mark >= 2.75  && mark < 3.75) {
+      backgroundColor = "list__item--mark--backgroundYellow";
+    } else if (mark >= 3.75 && mark < 4.75) {
+      backgroundColor = "list__item--mark--backgroundBlue";
+    } else if (mark >= 4.75 && mark < 5.75) {
+      backgroundColor = "list__item--mark--backgroundGreen";
+    } else {
+      backgroundColor = "list__item--mark--backgroundGreenyYellow";
+    }
+
     marksHtmlContent += `
-        <li class="list__item--mark">
+        <li class="list__item--mark ${backgroundColor}">
           <div class="list__item--number">${mark}</div>
           <div class="list__item--test">${subject.testMarks[i]}</div>
           <button class="js-button--deleteMark list__item--buttonDeleteMark">Usuń</button>
@@ -53,15 +68,15 @@ const renderMarks = (subject) => {
 const calculateAverageMark = (subject) => {
   let sum = 0;
   let counter = 0;
-  for(let i=0; i < subject.marks.length; i++){
+  for (let i = 0; i < subject.marks.length; i++) {
     sum += subject.marks[i] * subject.importanceMarks[i];
     counter += subject.importanceMarks[i];
   }
-  
-  if (counter === 0){
+
+  if (counter === 0) {
     return 0;
   } else {
-    return (sum/counter).toFixed(2);
+    return (sum / counter).toFixed(2);
   }
 };
 

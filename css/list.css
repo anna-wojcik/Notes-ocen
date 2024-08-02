@@ -35,6 +35,30 @@
     color: white;
 }
 
+.list__item--mark--backgroundRed {
+    background: rgb(255, 89, 94);
+}
+
+.list__item--mark--backgroundViolet {
+    background: rgb(106, 76, 147);
+}
+
+.list__item--mark--backgroundYellow {
+    background: rgb(255, 202, 58);
+}
+
+.list__item--mark--backgroundBlue {
+    background: rgb(25, 130, 196);
+}
+
+.list__item--mark--backgroundGreen {
+    background: rgb(138, 201, 38);
+}
+
+.list__item--mark--backgroundGreenyYellow {
+    background: rgb(103, 148, 54);
+}
+
 .list__item--number {
     display: grid;
     font-size: 34px;
