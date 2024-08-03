@@ -1,5 +1,18 @@
 
-let subjectsTable = [];
+let subjectsTable = [
+  {
+    content: "Polski",
+    marks: [1.5, 1.75, 2.5, 2.75, 3.5, 3.75, 4.5, 4.75, 5.5, 5.75],
+    testMarks: ["Aktywność", "Sprawdzian", "Kartkówka", "Aktywność", "Sprawdzian", "Kartkówka", "Aktywność", "Sprawdzian", "Kartkówka", "Kartkówka"],
+    importanceMarks: [1, 2, 1, 1, 2, 1, 1, 1, 2, 1],
+  },
+  {
+    content: "Matematyka",
+    marks: [1, 2, 3, 4, 5, 6],
+    testMarks: ["Aktywność", "Sprawdzian", "Kartkówka", "Aktywność", "Sprawdzian", "Kartkówka"],
+    importanceMarks: [1, 2, 1, 1, 2, 1],
+  },
+];
 
 const addNewSubject = (nameSubject) => {
   subjectsTable = [
@@ -40,9 +53,34 @@ const renderMarks = (subject) => {
       backgroundColor = "list__item--mark--backgroundGreenyYellow";
     }
 
+    let markText;
+    if (mark === 1 || mark === 2 || mark === 3 || mark === 4 || mark === 5 || mark === 6) {
+      markText = mark;
+    } else if (mark === 1.5) {
+      markText = "1+";
+    } else if (mark === 1.75) {
+      markText = "2-";
+    } else if (mark === 2.5) {
+      markText = "2+";
+    } else if (mark === 2.75) {
+      markText = "3-";
+    } else if (mark === 3.5) {
+      markText = "3+";
+    } else if (mark === 3.75) {
+      markText = "4-";
+    } else if (mark === 4.5) {
+      markText = "4+";
+    } else if (mark === 4.75) {
+      markText = "5-";
+    } else if (mark === 5.5) {
+      markText = "5+";
+    } else if (mark === 5.75) {
+      markText = "6-";
+    }
+
     marksHtmlContent += `
         <li class="list__item--mark ${backgroundColor}">
-          <div class="list__item--number">${mark}</div>
+          <div class="list__item--number">${markText}</div>
           <div class="list__item--test">${subject.testMarks[i]}</div>
           <button class="js-button--deleteMark list__item--buttonDeleteMark">Usuń</button>
         </li>
