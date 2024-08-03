@@ -35,6 +35,7 @@
 
 .list__item--mark {
     margin-right: 15px;
+    margin-bottom: 15px;
     display: grid;
     grid-template-rows: 60% 20% 20%;
     grid-template-columns: 1fr;
